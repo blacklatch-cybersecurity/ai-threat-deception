@@ -1,0 +1,27 @@
+body {
+    background: #0a0a0a;
+    color: white;
+    font-family: Arial;
+}
+.container {
+    display: flex;
+    gap: 20px;
+}
+.panel {
+    background: #111;
+    padding: 20px;
+    border-radius: 12px;
+    flex: 1;
+}
+#map {
+    height: 400px;
+}
+.event {
+    padding: 10px;
+    margin: 5px 0;
+    border-left: 5px solid;
+}
+.event.critical { border-color: red; }
+.event.high { border-color: orange; }
+.event.medium { border-color: yellow; }
+.event.low { border-color: green; }

@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Deception Dashboard</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/vis-timeline/7.4.9/vis-timeline-graph2d.min.css" rel="stylesheet"/>
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Arial;margin:12px;}
+    #timeline {height: 300px; border:1px solid #ddd;}
+    #heatmap {height: 300px; border:1px solid #ddd;}
+    .panel {display:flex;gap:12px;margin-top:12px;}
+    .card{flex:1;padding:8px;border-radius:6px;background:#f7f7f7;}
+    .mitre {font-size:0.9em}
+  </style>
+</head>
+<body>
+  <h2>Blacklatch Deception Dashboard</h2>
+  <div id="timeline"></div>
+  <div class="panel">
+    <div class="card">
+      <h4>Deception Heatmap (IP × Intent)</h4>
+      <canvas id="heatmap" width="700" height="300"></canvas>
+    </div>
+    <div class="card">
+      <h4>Latest Events</h4>
+      <ul id="events"></ul>
+      <h4>MITRE</h4>
+      <div id="mitre" class="mitre"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-timeline/7.4.9/vis-timeline-graph2d.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+  const items = new vis.DataSet([]);
+  const container = document.getElementById('timeline');
+  const timeline = new vis.Timeline(container, items, {});
+  // heatmap data structure
+  const ipIndex = {}, intentIndex = {};
+  const cellCounts = {};
+  const ctx = document.getElementById('heatmap').getContext('2d');
+  let heatChart;
+
+  function updateHeatChart() {
+    const ips = Object.keys(ipIndex);
+    const intents = Object.keys(intentIndex);
+    const labels = ips;
+    const datasets = intents.map((intent, idx) => {
+      return {
+        label: intent,
+        data: ips.map(ip => cellCounts[`${ip}|${intent}`] || 0),
+        fill: false,
+        borderWidth: 0,
+        backgroundColor: `rgba(${(idx*60)%255},${(100+idx*30)%255},${(200-idx*20)%255},0.6)`
+      }
+    });
+    if (heatChart) heatChart.destroy();
+    heatChart = new Chart(ctx, {
+      type: 'bar',
+      data: { labels, datasets },
+      options: { responsive: true, scales: { x: { stacked: true }, y: { stacked: true } } }
+    });
+  }
+
+  function addEventToHeat(src_ip, intent) {
+    if (!ipIndex[src_ip]) { ipIndex[src_ip] = Object.keys(ipIndex).length; }
+    if (!intentIndex[intent]) { intentIndex[intent] = Object.keys(intentIndex).length; }
+    const k = `${src_ip}|${intent}`;
+    cellCounts[k] = (cellCounts[k] || 0) + 1;
+    updateHeatChart();
+  }
+
+  // SSE
+  const es = new EventSource('/stream');
+  es.onmessage = function(e) {
+    try {
+      const evt = JSON.parse(e.data);
+      const t = new Date(evt.time*1000);
+      const label = (evt.intent||evt.type||'event') + ' — ' + (evt.src_ip||'');
+      items.add({id:Math.random(), content: label, start: t});
+      const li = document.createElement('li');
+      li.textContent = `${t.toLocaleString()} | ${label} | ${evt.text||''}`;
+      document.getElementById('events').prepend(li);
+      // update heatmap
+      addEventToHeat(evt.src_ip||'unknown', evt.intent||evt.type||'unknown');
+      // MITRE panel update (show last mitre)
+      if (evt.mitre) {
+        const mdiv = document.getElementById('mitre');
+        mdiv.innerHTML = "<b>Tactics:</b> " + (evt.mitre.tactics || []).join(', ') +
+                         "<br><b>Techniques:</b> " + ((evt.mitre.techniques||[]).map(t=>t.id+': '+t.name).join(', ')) +
+                         "<br><b>Desc:</b> " + (evt.mitre.description || '');
+      }
+    } catch (err) { /* ignore keepalive comments */ }
+  }
+
+  es.onerror = function(e) { console.warn("SSE error", e); }
+  </script>
+</body>
+</html>

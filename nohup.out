@@ -1,0 +1,80 @@
+Traceback (most recent call last):
+  File "/root/cyber-projects/ai-threat-deception/honeypot/ssh_fake.py", line 2, in <module>
+    from classifier import classify_command
+  File "/root/cyber-projects/ai-threat-deception/honeypot/classifier.py", line 4, in <module>
+    model = joblib.load("../model/model.pkl")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/cyber-projects/ai-threat-deception/venv/lib/python3.11/site-packages/joblib/numpy_pickle.py", line 735, in load
+    with open(filename, "rb") as f:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../model/model.pkl'
+Traceback (most recent call last):
+  File "/root/cyber-projects/ai-threat-deception/honeypot/ssh_fake.py", line 2, in <module>
+    from classifier import classify_command
+  File "/root/cyber-projects/ai-threat-deception/honeypot/classifier.py", line 4, in <module>
+    model = joblib.load("../model/model.pkl")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/cyber-projects/ai-threat-deception/venv/lib/python3.11/site-packages/joblib/numpy_pickle.py", line 735, in load
+    with open(filename, "rb") as f:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../model/model.pkl'
+Traceback (most recent call last):
+  File "/root/cyber-projects/ai-threat-deception/honeypot/ssh_fake.py", line 2, in <module>
+    from classifier import classify_command
+  File "/root/cyber-projects/ai-threat-deception/honeypot/classifier.py", line 4, in <module>
+    model = joblib.load("../model/model.pkl")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/cyber-projects/ai-threat-deception/venv/lib/python3.11/site-packages/joblib/numpy_pickle.py", line 735, in load
+    with open(filename, "rb") as f:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../model/model.pkl'
+Traceback (most recent call last):
+  File "/root/cyber-projects/ai-threat-deception/honeypot/ssh_fake.py", line 2, in <module>
+    from classifier import classify_command
+  File "/root/cyber-projects/ai-threat-deception/honeypot/classifier.py", line 4, in <module>
+    model = joblib.load("../model/model.pkl")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/cyber-projects/ai-threat-deception/venv/lib/python3.11/site-packages/joblib/numpy_pickle.py", line 735, in load
+    with open(filename, "rb") as f:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../model/model.pkl'
+Traceback (most recent call last):
+  File "/root/cyber-projects/ai-threat-deception/honeypot/ssh_fake.py", line 2, in <module>
+    from classifier import classify_command
+  File "/root/cyber-projects/ai-threat-deception/honeypot/classifier.py", line 4, in <module>
+    model = joblib.load("../model/model.pkl")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/cyber-projects/ai-threat-deception/venv/lib/python3.11/site-packages/joblib/numpy_pickle.py", line 735, in load
+    with open(filename, "rb") as f:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../model/model.pkl'
+Traceback (most recent call last):
+  File "/root/cyber-projects/ai-threat-deception/honeypot/ssh_fake.py", line 2, in <module>
+    from classifier import classify_command
+  File "/root/cyber-projects/ai-threat-deception/honeypot/classifier.py", line 4, in <module>
+    model = joblib.load("../model/model.pkl")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/cyber-projects/ai-threat-deception/venv/lib/python3.11/site-packages/joblib/numpy_pickle.py", line 735, in load
+    with open(filename, "rb") as f:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../model/model.pkl'
+Traceback (most recent call last):
+  File "/root/cyber-projects/ai-threat-deception/honeypot/ssh_fake.py", line 2, in <module>
+    from classifier import classify_command
+  File "/root/cyber-projects/ai-threat-deception/honeypot/classifier.py", line 4, in <module>
+    model = joblib.load("../model/model.pkl")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/cyber-projects/ai-threat-deception/venv/lib/python3.11/site-packages/joblib/numpy_pickle.py", line 735, in load
+    with open(filename, "rb") as f:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../model/model.pkl'
+Traceback (most recent call last):
+  File "/root/cyber-projects/ai-threat-deception/honeypot/ssh_fake.py", line 2, in <module>
+    from classifier import classify_command
+  File "/root/cyber-projects/ai-threat-deception/honeypot/classifier.py", line 4, in <module>
+    model = joblib.load("../model/model.pkl")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/cyber-projects/ai-threat-deception/venv/lib/python3.11/site-packages/joblib/numpy_pickle.py", line 735, in load
+    with open(filename, "rb") as f:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../model/model.pkl'

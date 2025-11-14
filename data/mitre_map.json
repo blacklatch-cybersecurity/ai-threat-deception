@@ -1,0 +1,18 @@
+{
+  "brute": {
+    "tactics": ["TA0006"],
+    "techniques": [{"id":"T1110","name":"Brute Force"}],
+    "description": "Brute force authentications"
+  },
+  "recon": {
+    "tactics": ["TA0043"],
+    "techniques": [{"id":"T1595","name":"Active Scanning"}],
+    "description": "Reconnaissance / scanning"
+  },
+  "lateral": {
+    "tactics": ["TA0008"],
+    "techniques": [{"id":"T1021","name":"Remote Services"}],
+    "description": "Lateral Movement"
+  },
+  "unknown": {}
+}
